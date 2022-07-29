@@ -1,30 +1,19 @@
-# Time: O(n)
-# mem: O(n)
-def max_profit(prices):
-    result = 0
-    left_pointer = 0
-    for right_pointer in range(1, len(prices)):
-        if prices[right_pointer] < prices[left_pointer]:
-            left_pointer = right_pointer
-        result = max(result, prices[right_pointer] - prices[left_pointer])
-    return result
+def merge(intervals):
+    # O(nLogn)
+    intervals.sort(key=lambda i: i[0])  # sorting from the start value
 
+    output = [intervals[0]]
 
-def max_profit_2(prices):
-    l, r = 0, 1  # left = buy, right =sell
-    max_price = 0
-
-    while r < len(prices):
-        if prices[l] < prices[r]:
-            profit = prices[r] - prices[l]
-            max_price = max(max_price, profit)
+    # O(n)
+    for start, end in intervals[1:]:
+        last_end = output[-1][1]
+        if start <= last_end:
+            output[-1][1] = max(last_end, end)
         else:
-            l = r
-        r += 1
-    return max_price
+            output.append([start, end])
+    return output
 
 
 if __name__ == '__main__':
     intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
-    print(max_profit(p))
-    print(max_profit_2(p))
+    print(merge(intervals))

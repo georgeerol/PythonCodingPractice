@@ -1,3 +1,4 @@
+
 class BinaryThree:
     def __init__(self, size):
         self.custom_list = size * [None]

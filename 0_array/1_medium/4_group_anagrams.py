@@ -2,6 +2,7 @@ from collections import defaultdict
 
 
 def group_anagram(strs):
+    # O(m*n)
     res = defaultdict(list)  # mapping charCount to List of Anagrams
     for s in strs:
         count = [0] * 26  # a ... z
@@ -12,7 +13,7 @@ def group_anagram(strs):
 
 
 def group_anagram_2(strs):
-    res = defaultdict(list)  # mapping charCount to List of Anagrams
+    res = defaultdict(list)  # mapping charCount to List of Anagrams.
     for s in strs:
         # keys can be strings, because they are immutable.
         res[str(sorted(s))].append(s)

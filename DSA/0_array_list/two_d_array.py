@@ -45,5 +45,3 @@ print(searchTDArray(twoDArray, 444))
 
 newTDArray = np.delete(twoDArray, 1, axis=1)
 print(newTDArray)
-
-a.spli
